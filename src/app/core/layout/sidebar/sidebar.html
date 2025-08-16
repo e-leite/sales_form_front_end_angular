@@ -1,0 +1,14 @@
+<aside class="sidebar">
+    <nav class="sidebar-menu">
+        <ul>
+            @for(item of sidebarMenuItems; track $index) {
+                <li>
+                    <a href="">
+                        <span class="material-symbols-rounded">{{ item.icon }}</span>
+                        <span>{{ item.label }}</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</aside>

@@ -4,15 +4,6 @@
     height: calc(100vh - 70px);
 }
 
-.sidebar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: calc(100vh - 70px);
-    width: 200px;
-    background-color: var(--gray-medium);
-}
-
 .page-container {
     margin-left: 200px;
     padding: 16px;
