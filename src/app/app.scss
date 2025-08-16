@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 70px;
+    padding: 0 16px;
+}
+
+.header h2, span {
+    color: var(--gray-darkest);
+}
+
+.header .title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 70px);
+    width: 200px;
+    background-color: var(--gray-medium);
+}
+
+.page-container {
+    margin-left: 200px;
+    padding: 16px;
+    height: 100%;
+}

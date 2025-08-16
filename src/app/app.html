@@ -1,1 +1,19 @@
-<router-outlet />
+<header class="header">
+    <div class="title-wrapper">
+        <span class="material-symbols-rounded">menu</span>
+        <h2>{{ title() }}</h2>
+    </div>
+    <span class="material-symbols-rounded">person</span>
+</header>
+<main class="main-container">
+    <aside class="sidebar">
+        <ul>
+            <li>Home</li>
+        </ul>
+    </aside>
+    <div class="page-container">
+        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus rem vel facere ut facilis? Natus alias saepe optio incidunt ducimus, blanditiis quis quod quo enim repudiandae eos dolore consectetur debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus perferendis, ut veritatis eum doloribus atque culpa voluptas ea dolores, modi illum tempore incidunt sapiente repellendus ipsa eius unde veniam velit.</span>
+        <router-outlet />
+    </div>
+</main>
+
