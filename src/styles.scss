@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {    
+  --font-display: 2.25rem;
+  --font-h1: 1.75rem;
+  --font-h2: 1.5rem;
+  --font-h3: 1.25rem;
+  --font-subtitle: 1.125rem;
+  --font-body: 1rem;
+  --font-secondary: 0.875rem;
+  --font-caption: 0.75rem;
+  --font-button: 0.875rem;
+
+  --space-0: 0rem;     /* 0px */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+
+  --gray-lightest: #F5F7FA;
+  --gray-light: #E1E5EA;
+  --gray-medium: #D1D5DB;
+  --gray-dark: #6B7280;
+  --gray-darkest: #374151;
+  --blue-main: #3B82F6;
+  --blue-hover: #1D4ED8;
+  --green-success: #10B981;
+  --green-success-hover: #059669;
+  --red-error: #EF4444;
+  --red-error-hover: #DC2626;
+  --yellow-warning: #FBBF24;
+  --yellow-warning-hover: #F59E0B;
+
+  --green-light: #D1FAE5;
+  --green-text: #065F46;
+  --red-light: #FEE2E2;
+  --red-text: #991B1B;
+  --yellow-light: #FEF9C3;
+  --yellow-text: #92400E;
+  --blue-light: #DBEAFE;
+  --blue-text: #1E3A8A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
