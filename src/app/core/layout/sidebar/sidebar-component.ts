@@ -5,8 +5,8 @@ import { SidebarMenuItem } from '../../models/sidebar-menu-item';
 @Component({
   selector: 'app-sidebar',
   imports: [],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss'
+  templateUrl: './sidebar-component.html',
+  styleUrl: './sidebar-component.scss'
 })
 export class Sidebar implements OnInit {
 
