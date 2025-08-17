@@ -27,19 +27,19 @@
 
 .table-container table th, td {
     padding: .75rem .5rem;
-    border-top: 1px solid var(--gray-medium);
-    border-bottom: 1px solid var(--gray-medium);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     text-align: left;    
 }
 
 .table-container table th {
-    color: var(--gray-darkest);
-    background-color: var(--gray-light);
+    color: var(--text);
+    background-color: var(--gray-200);
 }
 
 .table-container table td {
     font-size: var(--font-secondary);
-    color: var(--gray-dark);
+    color: var(--text-secondary);
     
 }
 
@@ -54,9 +54,9 @@
 }
 
 .material-symbols-rounded.primary {
-    color: var(--blue-main);
+    color: var(--color-primary);
 }
 
 .material-symbols-rounded.danger {
-    color: var(--red-error);
+    color: var(--color-error);
 }
