@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ISalesTeam } from '../shared/interfaces/sales-team.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SalesTeamService {
 
     private readonly apiUrl = 'http://localhost:8080';
 
-    getSalesTeam(): Observable<any[]> {
-        return this.httpClient.get<any[]>(`${this.apiUrl}/salesteams`)
+    getSalesTeam(): Observable<ISalesTeam[]> {
+        return this.httpClient.get<ISalesTeam[]>(`${this.apiUrl}/salesteams`)
     }  
 }
