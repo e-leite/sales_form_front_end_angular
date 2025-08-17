@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar-service';
 import { SidebarMenuItem } from '../../models/sidebar-menu-item';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './sidebar-component.html',
   styleUrl: './sidebar-component.scss'
 })

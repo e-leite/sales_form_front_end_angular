@@ -3,7 +3,7 @@
         <ul>
             @for(item of sidebarMenuItems; track $index) {
                 <li>
-                    <a href="">
+                    <a routerLink="{{ item.route }}">
                         <span class="material-symbols-rounded">{{ item.icon }}</span>
                         <span>{{ item.label }}</span>
                     </a>
