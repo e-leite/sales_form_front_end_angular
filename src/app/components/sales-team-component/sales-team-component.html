@@ -1,0 +1,29 @@
+<div class="main-container">
+    <div class="title-container">
+        <span>Sales Teams</span>
+        <button>Create New</button>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="action-column"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(team of salesTeams; track team.id) {
+                    <tr>
+                        <td>{{ team.name }}</td>
+                        <td class="action-column">
+                            <div class="action-buttons-wrapper">
+                                <span class="material-symbols-rounded primary">edit_square</span>
+                                <span class="material-symbols-rounded danger">delete</span>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
