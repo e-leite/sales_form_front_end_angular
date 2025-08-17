@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="title-container">
         <span>Sales Teams</span>
-        <button>Create New</button>
+        <app-button-component type="primary" label="Create New" (clicked)="toggleDialog()"></app-button-component>
     </div>
     <div class="table-container">
         <table>
@@ -26,4 +26,7 @@
             </tbody>
         </table>
     </div>
+    @if(isDialogOpen) {
+        <app-dialog-component (closeDialog)="toggleDialog()" (saved)="onSaved()"></app-dialog-component>
+    }
 </div>
