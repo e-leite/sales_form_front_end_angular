@@ -16,8 +16,8 @@
 }
 
 .table-container {
-    display: flex;
-    justify-content: center;
+    height: 90%;
+    overflow-y: auto;
 }
 
 .table-container table {
@@ -26,18 +26,19 @@
 }
 
 .table-container table th, td {
-    padding: .75rem .5rem;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     text-align: left;    
 }
 
 .table-container table th {
+    padding: .75rem .5rem;
     color: var(--text);
     background-color: var(--gray-200);
 }
 
 .table-container table td {
+    padding: .25rem .5rem;
     font-size: var(--font-secondary);
     color: var(--text-secondary);
     
@@ -59,4 +60,19 @@
 
 .material-symbols-rounded.danger {
     color: var(--color-error);
+}
+
+.icon-button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

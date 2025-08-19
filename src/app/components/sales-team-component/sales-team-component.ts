@@ -17,6 +17,8 @@ export class SalesTeamComponent implements OnInit {
     protected isDialogOpen: boolean = false;
     
     protected salesTeams: ISalesTeam[] = [];
+
+    protected selectedSalesTeam!: ISalesTeam | null;
     
     ngOnInit(): void {
         this.getSalesTeams();
@@ -24,6 +26,7 @@ export class SalesTeamComponent implements OnInit {
 
     toggleDialog() {
         this.isDialogOpen = !this.isDialogOpen;
+        this.selectedSalesTeam = null;
     }
     
     onSaved() {
@@ -32,11 +35,20 @@ export class SalesTeamComponent implements OnInit {
     }
 
     private getSalesTeams() {
-        this.salesTeamService.getSalesTeam().subscribe(
+        this.salesTeamService.get().subscribe(
             salesTeams => {
                 this.salesTeams = salesTeams;
             }
         )
+    }
+
+    onEdit(team: ISalesTeam) {
+        this.selectedSalesTeam = team;
+        this.isDialogOpen = true;
+    }
+
+    onDelete(id: string) {
+        this.salesTeamService.delete(id).subscribe(() => this.getSalesTeams());
     }
 
 

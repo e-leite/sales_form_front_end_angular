@@ -1,8 +1,8 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ButtonComponent } from "../button-component/button-component";
-import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SalesTeamService } from '../../../services/sales-team-service';
-import { SalesTeamCreateDto } from '../../dtos/sales-team-create-dto';
+import { ISalesTeam } from '../../interfaces/sales-team.interface';
 
 @Component({
   selector: 'app-dialog-component',
@@ -10,23 +10,52 @@ import { SalesTeamCreateDto } from '../../dtos/sales-team-create-dto';
   templateUrl: './dialog-component.html',
   styleUrl: './dialog-component.scss'
 })
-export class DialogComponent {
-
+export class DialogComponent implements OnInit {
+    
     private readonly salesTeamService = inject(SalesTeamService);
     private readonly fb = inject(NonNullableFormBuilder);
-
+    
     @Output() closeDialog = new EventEmitter<void>();
     @Output() saved = new EventEmitter<void>();
-
+    @Input() data!: ISalesTeam | null;
+    
     dialogForm = this.fb.group({
-        name: ['', [
-            Validators.required,
-        ]],
+        id: [''],
+        name: ['', [Validators.required,]],
+        sellersIds: [['']],
     })
-
+    
+    ngOnInit(): void {
+        if(this.data) {
+            this.dialogForm.setValue({
+                id: this.data.id,
+                name: this.data.name,
+                sellersIds: this.data.sellersIds ?? [],
+            })
+        }
+    }
+    
     onSave() {
         if(this.dialogForm.valid) {
-            this.salesTeamService.saveSalesTeam(this.dialogForm.value).subscribe({
+            console.log(this.dialogForm.value);
+            this.save(this.dialogForm);
+        }
+    }
+
+    onCancel() {
+        this.dialogForm.reset();
+        this.closeDialog.emit();
+    }
+
+    private save(fg: FormGroup) {
+        if(this.data?.id && this.dialogForm.valid) {
+            const salesTeam: ISalesTeam = {
+                id: this.data?.id,
+                name: this.dialogForm.value.name ?? '',
+                sellersIds: this.dialogForm.value.sellersIds
+            }
+            
+            this.salesTeamService.update(salesTeam).subscribe({
                 next: () => {
                     this.dialogForm.reset();
                     this.saved.emit();
@@ -36,12 +65,16 @@ export class DialogComponent {
                 },
             })
 
+        } else {
+            this.salesTeamService.save(this.dialogForm.value).subscribe({
+                next: () => {
+                    this.dialogForm.reset();
+                    this.saved.emit();
+                },
+                error: (err) => {
+                    console.error('Erro ao criar Sales Team', err);
+                },
+            })
         }
     }
-
-    onCancel() {
-        this.dialogForm.reset();
-        this.closeDialog.emit();
-    }
-
 }

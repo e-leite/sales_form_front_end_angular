@@ -13,11 +13,19 @@ export class SalesTeamService {
 
     private readonly apiUrl = 'http://localhost:8080';
 
-    getSalesTeam(): Observable<ISalesTeam[]> {
+    get(): Observable<ISalesTeam[]> {
         return this.httpClient.get<ISalesTeam[]>(`${this.apiUrl}/salesteams`)
     }
 
-    saveSalesTeam(salesTeamCreateDto: SalesTeamCreateDto): Observable<ISalesTeam> {
+    save(salesTeamCreateDto: SalesTeamCreateDto): Observable<ISalesTeam> {
         return this.httpClient.post<ISalesTeam>(`${this.apiUrl}/salesteams`, salesTeamCreateDto)
+    }
+
+    update(salesTeam: ISalesTeam): Observable<ISalesTeam> {
+        return this.httpClient.put<ISalesTeam>(`${this.apiUrl}/salesteams/${salesTeam.id}`, salesTeam)
+    }
+
+    delete(id: string): Observable<void> {
+        return this.httpClient.delete<void>(`${this.apiUrl}/salesteams/${id}`)
     }
 }
