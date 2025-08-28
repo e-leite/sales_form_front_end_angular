@@ -3,5 +3,5 @@ export interface IProgramingLanguage {
     name: string;
     category: string;
     createdAt: string;
-    updatedAt: string;    
+    updatedAt: string;
 }
