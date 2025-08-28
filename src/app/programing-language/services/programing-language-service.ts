@@ -16,12 +16,16 @@ export class ProgramingLanguageService {
         return this.httpClient.get<IProgramingLanguage[]>(`${this.apiUrl}`)
     }
 
-    save(ProgramingLanguageCreateDto: ProgramingLanguageCreateDto): Observable<IProgramingLanguage> {
-        return this.httpClient.post<IProgramingLanguage>(`${this.apiUrl}`, ProgramingLanguageCreateDto)
+    getById(id: string): Observable<IProgramingLanguage> {
+        return this.httpClient.get<IProgramingLanguage>(`${this.apiUrl}/${id}`)
     }
 
-    update(salesTeam: IProgramingLanguage): Observable<IProgramingLanguage> {
-        return this.httpClient.put<IProgramingLanguage>(`${this.apiUrl}/${salesTeam.id}`, salesTeam)
+    save(dto: ProgramingLanguageCreateDto): Observable<IProgramingLanguage> {
+        return this.httpClient.post<IProgramingLanguage>(`${this.apiUrl}`, dto)
+    }
+
+    update(id: string, dto: ProgramingLanguageCreateDto): Observable<IProgramingLanguage> {
+        return this.httpClient.put<IProgramingLanguage>(`${this.apiUrl}/${id}`, dto)
     }
 
     delete(id: string): Observable<void> {

@@ -1,1 +1,23 @@
-<p>programing-language-form-component works!</p>
+<div class="main-container">
+    <div class="dialog-container">
+        <div class="dialog-title-container">
+            <span>Programing Language</span>
+        </div>
+        <div class="form-container">
+            <form [formGroup]="form">
+                <div class="input-wrapper">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name">
+                </div>
+                <div class="input-wrapper">
+                    <label for="name">Category</label>
+                    <input id="name" type="text" formControlName="category">
+                </div>
+                <div class="form-buttons-wrapper">
+                    <app-button-component type="success" label="Save" (clicked)="onSave()" ></app-button-component>
+                    <app-button-component type="error" label="Cancel" (clicked)="onCancel()" ></app-button-component>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
