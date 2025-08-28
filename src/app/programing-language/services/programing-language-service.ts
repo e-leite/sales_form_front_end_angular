@@ -10,22 +10,22 @@ import { ProgramingLanguageCreateDto } from '../../shared/dtos/programing-langua
 export class ProgramingLanguageService {
     private readonly httpClient = inject(HttpClient);
 
-    private readonly apiUrl = 'http://localhost:8080/api';
+    private readonly apiUrl = '/api/programinglanguages';
 
     get(): Observable<IProgramingLanguage[]> {
-        return this.httpClient.get<IProgramingLanguage[]>(`${this.apiUrl}/programinglanguages`)
+        return this.httpClient.get<IProgramingLanguage[]>(`${this.apiUrl}`)
     }
 
     save(ProgramingLanguageCreateDto: ProgramingLanguageCreateDto): Observable<IProgramingLanguage> {
-        return this.httpClient.post<IProgramingLanguage>(`${this.apiUrl}/programinglanguages`, ProgramingLanguageCreateDto)
+        return this.httpClient.post<IProgramingLanguage>(`${this.apiUrl}`, ProgramingLanguageCreateDto)
     }
 
     update(salesTeam: IProgramingLanguage): Observable<IProgramingLanguage> {
-        return this.httpClient.put<IProgramingLanguage>(`${this.apiUrl}/programinglanguages/${salesTeam.id}`, salesTeam)
+        return this.httpClient.put<IProgramingLanguage>(`${this.apiUrl}/${salesTeam.id}`, salesTeam)
     }
 
     delete(id: string): Observable<void> {
-        return this.httpClient.delete<void>(`${this.apiUrl}/programinglanguages/${id}`)
+        return this.httpClient.delete<void>(`${this.apiUrl}/${id}`)
     }
   
 }
