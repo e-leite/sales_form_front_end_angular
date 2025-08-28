@@ -1,7 +1,6 @@
-import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ButtonComponent } from "../button-component/button-component";
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SalesTeamService } from '../../../services/sales-team-service';
 import { ISalesTeam } from '../../interfaces/sales-team.interface';
 
 @Component({
@@ -10,9 +9,8 @@ import { ISalesTeam } from '../../interfaces/sales-team.interface';
   templateUrl: './dialog-component.html',
   styleUrl: './dialog-component.scss'
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
     
-    private readonly salesTeamService = inject(SalesTeamService);
     private readonly fb = inject(NonNullableFormBuilder);
     
     @Output() closeDialog = new EventEmitter<void>();
@@ -25,56 +23,12 @@ export class DialogComponent implements OnInit {
         sellersIds: [['']],
     })
     
-    ngOnInit(): void {
-        if(this.data) {
-            this.dialogForm.setValue({
-                id: this.data.id,
-                name: this.data.name,
-                sellersIds: this.data.sellersIds ?? [],
-            })
-        }
-    }
     
     onSave() {
-        if(this.dialogForm.valid) {
-            console.log(this.dialogForm.value);
-            this.save(this.dialogForm);
-        }
     }
 
     onCancel() {
         this.dialogForm.reset();
         this.closeDialog.emit();
-    }
-
-    private save(fg: FormGroup) {
-        if(this.data?.id && this.dialogForm.valid) {
-            const salesTeam: ISalesTeam = {
-                id: this.data?.id,
-                name: this.dialogForm.value.name ?? '',
-                sellersIds: this.dialogForm.value.sellersIds
-            }
-            
-            this.salesTeamService.update(salesTeam).subscribe({
-                next: () => {
-                    this.dialogForm.reset();
-                    this.saved.emit();
-                },
-                error: (err) => {
-                    console.error('Erro ao criar Sales Team', err);
-                },
-            })
-
-        } else {
-            this.salesTeamService.save(this.dialogForm.value).subscribe({
-                next: () => {
-                    this.dialogForm.reset();
-                    this.saved.emit();
-                },
-                error: (err) => {
-                    console.error('Erro ao criar Sales Team', err);
-                },
-            })
-        }
     }
 }

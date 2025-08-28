@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { SalesTeamComponent } from './components/sales-team-component/sales-team-component';
+import { ProgramingLanguageListComponent } from './programing-language/components/programing-language-list-component/programing-language-list-component';
 
 export const routes: Routes = [
     {
-        path: 'salesteams',
-        component: SalesTeamComponent,
+        path: 'programinglanguages',
+        component: ProgramingLanguageListComponent,
     },
 ];

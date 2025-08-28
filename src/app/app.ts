@@ -10,5 +10,5 @@ import { HeaderComponent } from './core/layout/header/header-component';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Sales Form Sender');
+  protected readonly title = signal('Job Search Tool');
 }

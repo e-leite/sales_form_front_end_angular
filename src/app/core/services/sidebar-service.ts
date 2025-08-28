@@ -7,7 +7,7 @@ import { SidebarMenuItem } from '../models/sidebar-menu-item';
 })
 export class SidebarService {
     private sidebarMenuItems: SidebarMenuItem[] = [
-        { label: 'Sales Teams', route: 'salesteams', icon: 'groups' },
+        { label: 'Programing Languages', route: 'programinglanguages', icon: 'code' },
     ];
 
     getSidebarMenuItems(): Observable<SidebarMenuItem[]> {

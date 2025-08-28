@@ -1,26 +1,32 @@
 <div class="main-container">
     <div class="title-container">
-        <span>Sales Teams</span>
-        <app-button-component type="primary" label="Create New" (clicked)="toggleDialog()"></app-button-component>
+        <span>Programing Language</span>
+        <app-button-component type="primary" label="Create New" (clicked)="onCreateNew()"></app-button-component>
     </div>
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Category</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <th class="action-column"></th>
                 </tr>
             </thead>
             <tbody>
-                @for(team of salesTeams; track team.id) {
+                @for(pl of programingLanguages; track pl.id) {
                     <tr>
-                        <td>{{ team.name }}</td>
+                        <td>{{ pl.name }}</td>
+                        <td>{{ pl.category }}</td>
+                        <td>{{ pl.createdAt | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ pl.updatedAt | date:'dd/MM/yyyy' }}</td>
                         <td class="action-column">
                             <div class="action-buttons-wrapper">
-                                <button class="icon-button" (click)="onEdit(team)" role="button" aria-label="Edit">
+                                <button class="icon-button" (click)="onEdit(pl)" role="button" aria-label="Edit">
                                     <span class="material-symbols-rounded primary">edit_square</span>
                                 </button>
-                                <button class="icon-button" (click)="onDelete(team.id)" role="button" aria-label="Delete">
+                                <button class="icon-button" (click)="onDelete(pl.id)" role="button" aria-label="Delete">
                                     <span class="material-symbols-rounded danger">delete</span>
                                 </button>
                             </div>
@@ -30,7 +36,4 @@
             </tbody>
         </table>
     </div>
-    @if(isDialogOpen) {
-        <app-dialog-component [data]="selectedSalesTeam" (closeDialog)="toggleDialog()" (saved)="onSaved()"></app-dialog-component>
-    }
 </div>

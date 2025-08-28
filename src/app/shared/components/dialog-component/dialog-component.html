@@ -1,18 +1,18 @@
 <div class="dialog-background"></div>
-    <div class="dialog-container">
-        <div class="dialog-title-container">
-            <span>Dialog Title</span>
-        </div>
-        <div class="form-container">
-            <form [formGroup]="dialogForm">
-                <div class="input-wrapper">
-                    <label for="name">Name</label>
-                    <input id="name" type="text" formControlName="name">
-                </div>
-                <div class="form-buttons-wrapper">
-                    <app-button-component type="success" label="Save" (clicked)="onSave()"></app-button-component>
-                    <app-button-component type="error" label="Cancel" (clicked)="onCancel()"></app-button-component>
-                </div>
-            </form>
-        </div>
+<div class="dialog-container">
+    <div class="dialog-title-container">
+        <span>Dialog Title</span>
     </div>
+    <div class="form-container">
+        <form [formGroup]="dialogForm">
+            <div class="input-wrapper">
+                <label for="name">Name</label>
+                <input id="name" type="text" formControlName="name">
+            </div>
+            <div class="form-buttons-wrapper">
+                <app-button-component type="success" label="Save" (clicked)="onSave()"></app-button-component>
+                <app-button-component type="error" label="Cancel" (clicked)="onCancel()"></app-button-component>
+            </div>
+        </form>
+    </div>
+</div>
