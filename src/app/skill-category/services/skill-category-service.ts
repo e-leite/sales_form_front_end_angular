@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { ISkillCategory } from '../../shared/interfaces/skill-category.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProgramingLanguageCreateDto } from '../../shared/dtos/programing-language-create-dto';
 import { SkillCategoryCreateDto } from '../../shared/dtos/skill-category-create-dto';
 
 @Injectable({
