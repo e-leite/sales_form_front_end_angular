@@ -1,0 +1,37 @@
+<div class="main-container">
+    <div class="title-container">
+        <span>Skill Categories</span>
+        <app-button-component type="primary" label="Create New" (clicked)="onCreateNew()"></app-button-component>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th class="action-column"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(sc of skillCategories; track sc.id) {
+                    <tr>
+                        <td>{{ sc.name }}</td>
+                        <td>{{ sc.createdAt | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ sc.updatedAt | date:'dd/MM/yyyy' }}</td>
+                        <td class="action-column">
+                            <div class="action-buttons-wrapper">
+                                <button class="icon-button" (click)="onEdit(sc)" role="button" aria-label="Edit">
+                                    <span class="material-symbols-rounded primary">edit_square</span>
+                                </button>
+                                <button class="icon-button" (click)="onDelete(sc.id)" role="button" aria-label="Delete">
+                                    <span class="material-symbols-rounded danger">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

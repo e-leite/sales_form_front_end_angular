@@ -1,0 +1,79 @@
+<div class="main-container">
+    <div class="form-main-container">
+        <div class="form-title-container">
+            <span>Skill Category</span>
+        </div>
+        <div class="form-container">
+            <form [formGroup]="form">
+                <div class="input-wrapper">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name">
+                </div>
+                <div class="form-buttons-wrapper">
+                    <app-button-component type="success" label="Save" (clicked)="onSave()" ></app-button-component>
+                    <app-button-component type="error" label="Cancel" (clicked)="onCancel()" ></app-button-component>
+                </div>
+            </form>
+        </div>
+    </div>
+    @if(form.value.id) {
+        <div class="table-container">
+            <div class="table-title-container">
+                <span>Subcategory:</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="action-column">
+                            <div class="action-buttons-wrapper">
+                                <button class="icon-button" (click)="tooglDialog()"  role="button" aria-label="Edit">
+                                    <span class="material-symbols-rounded primary">add</span>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(sc of subCategories; track sc.id) {
+                        <tr>
+                            <td>{{ sc.name }}</td>
+                            <td class="action-column">
+                                <div class="action-buttons-wrapper">
+                                    <button class="icon-button"  role="button" aria-label="Edit">
+                                        <span class="material-symbols-rounded primary">edit_square</span>
+                                    </button>
+                                    <button class="icon-button"  role="button" aria-label="Delete">
+                                        <span class="material-symbols-rounded danger">delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if(isDialogOpen) {
+        <div class="dialog-background"></div>
+        <div class="dialog-container">
+            <div class="dialog-title-container">
+                <span>Dialog Title</span>
+            </div>
+            <div class="form-container">
+                <form [formGroup]="subcategoryForm">
+                    <div class="input-wrapper">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" formControlName="name">
+                    </div>
+                    <div class="form-buttons-wrapper">
+                        <app-button-component type="success" label="Save" (clicked)="onSaveSubcategory()"></app-button-component>
+                        <app-button-component type="error" label="Cancel" (clicked)="tooglDialog()"></app-button-component>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
