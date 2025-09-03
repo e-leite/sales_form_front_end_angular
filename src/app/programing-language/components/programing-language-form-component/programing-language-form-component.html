@@ -11,7 +11,10 @@
                 </div>
                 <div class="input-wrapper">
                     <label for="name">Category</label>
-                    <input id="name" type="text" formControlName="category">
+                    <select id="name" formControlName="category">
+                        <option value="Front-End">Front-End</option>
+                        <option value="Back-End">Back-End</option>
+                    </select>
                 </div>
                 <div class="form-buttons-wrapper">
                     <app-button-component type="success" label="Save" (clicked)="onSave()" ></app-button-component>

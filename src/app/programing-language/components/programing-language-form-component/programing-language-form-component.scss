@@ -48,7 +48,7 @@
     width: 100%;
 }
 
-.input-wrapper input {
+.input-wrapper input, select {
     width: 100%;
     outline: none;
     font-size: var(--font-body);
@@ -56,13 +56,13 @@
     border-radius: 8px;
     border: 1px solid var(--border);
     color: var(--text);
+    margin-top: 4px;
 }
 
 .input-wrapper label {
     font-size: var(--font-caption);
     color: var(--text-secondary);
     font-weight: 600;
-
 }
 
 .form-buttons-wrapper {
