@@ -25,6 +25,7 @@ export class SkillCategoryFormComponent implements OnInit {
 
     protected subCategories: ISkillSubcategory[] = [];
     protected isDialogOpen: boolean = false;
+    protected selectedCategoryId: string = '';
     protected form = this.fb.group({
         id: [''],
         name: ['', Validators.required],
@@ -37,9 +38,9 @@ export class SkillCategoryFormComponent implements OnInit {
     })
 
     ngOnInit(): void {
-        const id: string = this.route.snapshot.params['id'];
-        if(id) {
-            this.skillCategoryService.getById(id).subscribe(data => {
+        this.selectedCategoryId = this.route.snapshot.params['id'];
+        if(this.selectedCategoryId) {
+            this.skillCategoryService.getById(this.selectedCategoryId).subscribe(data => {
                 this.form.patchValue({
                     id: data.id,
                     name: data.name,
@@ -47,7 +48,7 @@ export class SkillCategoryFormComponent implements OnInit {
                 this.subCategories = data.subcategory;
                 this.subcategoryForm.patchValue({
                     name: '',
-                    categoryId: id,
+                    categoryId: this.selectedCategoryId,
                 })
             });
         }
@@ -68,7 +69,13 @@ export class SkillCategoryFormComponent implements OnInit {
                         name: this.form.value.name ?? ''
                     }
                 ).subscribe({
-                    next: () => this.location.back()
+                    next: () => {
+                        this.location.back();
+                        this.subcategoryForm.patchValue({
+                            name: '',
+                            categoryId: this.selectedCategoryId,
+                        });
+                    }
                 });
             }
         }
@@ -83,30 +90,57 @@ export class SkillCategoryFormComponent implements OnInit {
             if(this.subcategoryForm.value?.id !== '') {
                 const data: SkillSubcategoryCreateDto = {
                     name: this.subcategoryForm.value.name ?? '',
-                    categoryId: this.route.snapshot.params['id']
+                    categoryId: this.selectedCategoryId
                 }
                 this.skillSubcategoryService.update(this.subcategoryForm.value.id ?? '', data).subscribe({
-                    next: () => this.location.back()
+                    next: () => {
+                        this.refreshSkillSubcategory();
+                    }
                 })
             } else {
                 this.skillSubcategoryService.save(
                     {
                         name: this.subcategoryForm.value.name ?? '',
-                        categoryId: this.route.snapshot.params['id']
+                        categoryId: this.selectedCategoryId
                     }
                 ).subscribe({
                     next: () => {
-                        this.tooglDialog();
-                        this.skillCategoryService.getById(this.route.snapshot.params['id'])
-                            .subscribe(data => this.subCategories = data.subcategory);
+                        this.refreshSkillSubcategory();
                     }
                 });
             }
         }
     }
 
+    onEditSubcategory(subcategory: ISkillSubcategory) {
+        this.subcategoryForm.patchValue({
+            id: subcategory.id,
+            name: subcategory.name,
+            categoryId: this.selectedCategoryId
+        })
+        this.tooglDialog();
+    }
+
+    onDeleteSubcategory(subcategory: ISkillSubcategory) {
+        this.skillSubcategoryService.delete(subcategory.id).subscribe({
+            next: () => this.getSkillSubcategories()
+        })
+    }
+
     tooglDialog() {
         this.isDialogOpen = !this.isDialogOpen;
     }
 
+    private refreshSkillSubcategory() {
+        this.tooglDialog();
+        this.subcategoryForm.patchValue({
+            name: ''
+        });
+        this.getSkillSubcategories();
+    }
+
+    private getSkillSubcategories() {
+        this.skillCategoryService.getById(this.selectedCategoryId)
+            .subscribe(data => this.subCategories = data.subcategory);
+    }
 }
