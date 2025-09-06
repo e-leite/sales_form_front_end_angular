@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SkillCategoryService } from '../../services/skill-category-service';
 import { ISkillCategory } from '../../../shared/interfaces/skill-category.interface';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button-component/button-component";
 
 @Component({
   selector: 'app-skill-category-list-component',
-  imports: [DatePipe, ButtonComponent],
+  imports: [DatePipe, ButtonComponent, RouterModule],
   templateUrl: './skill-category-list-component.html',
   styleUrl: './skill-category-list-component.scss'
 })
@@ -21,7 +21,7 @@ export class SkillCategoryListComponent implements OnInit {
     skillCategories: ISkillCategory[] = []
 
     ngOnInit(): void {
-        this.getSkillCategories();
+        this.route.url.subscribe(() => this.getSkillCategories());        
     }
 
     onCreateNew() {
@@ -41,7 +41,6 @@ export class SkillCategoryListComponent implements OnInit {
     private getSkillCategories() {
         this.skillCategoryService.get().subscribe(data => {
             this.skillCategories = data;
-            console.log(this.skillCategories);
         });
     }
 

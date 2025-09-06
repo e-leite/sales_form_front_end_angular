@@ -9,6 +9,7 @@ export class SidebarService {
     private sidebarMenuItems: SidebarMenuItem[] = [
         { label: 'Programing Languages', route: 'programinglanguages', icon: 'code' },
         { label: 'Skill Categories', route: 'skillcategories', icon: 'category' },
+        { label: 'Skills', route: 'skills', icon: 'interests' },
     ];
 
     getSidebarMenuItems(): Observable<SidebarMenuItem[]> {

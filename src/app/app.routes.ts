@@ -3,6 +3,8 @@ import { ProgramingLanguageListComponent } from './programing-language/component
 import { ProgramingLanguageFormComponent } from './programing-language/components/programing-language-form-component/programing-language-form-component';
 import { SkillCategoryListComponent } from './skill-category/components/skill-category-list-component/skill-category-list-component';
 import { SkillCategoryFormComponent } from './skill-category/components/skill-category-form-component/skill-category-form-component';
+import { SkillListComponent } from './skill/components/skill-list-component/skill-list-component';
+import { SkillFormComponent } from './skill/components/skill-form-component/skill-form-component';
 
 export const routes: Routes = [
     {
@@ -22,21 +24,44 @@ export const routes: Routes = [
         component: ProgramingLanguageFormComponent,
     },
 
+
     {
         path: 'skillcategories',
         component: SkillCategoryListComponent,
+        children: [
+            {
+                path: 'new',
+                component: SkillCategoryFormComponent,
+            },
+            {
+                path: 'edit/:id',
+                component: SkillCategoryFormComponent,
+            },
+            {
+                path: 'delete/:id',
+                component: SkillCategoryFormComponent,
+            },
+        ]
     },
+
     {
-        path: 'skillcategories/new',
-        component: SkillCategoryFormComponent,
+        path: 'skills',
+        component: SkillListComponent,
+        children: [
+            {
+                path: 'new',
+                component: SkillFormComponent,
+            },
+            {
+                path: 'edit/:id',
+                component: SkillFormComponent,
+            },
+            {
+                path: 'delete/:id',
+                component: SkillFormComponent,
+            },
+        ]
     },
-    {
-        path: 'skillcategories/edit/:id',
-        component: SkillCategoryFormComponent,
-    },
-    {
-        path: 'skillcategories/delete/:id',
-        component: SkillCategoryFormComponent,
-    },
+    
     
 ];
