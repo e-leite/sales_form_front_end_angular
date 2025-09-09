@@ -5,6 +5,8 @@ import { SkillCategoryListComponent } from './skill-category/components/skill-ca
 import { SkillCategoryFormComponent } from './skill-category/components/skill-category-form-component/skill-category-form-component';
 import { SkillListComponent } from './skill/components/skill-list-component/skill-list-component';
 import { SkillFormComponent } from './skill/components/skill-form-component/skill-form-component';
+import { EnterpriseListComponent } from './enterprise/components/enterprise-list-component/enterprise-list-component';
+import { EnterpriseFormComponent } from './enterprise/components/enterprise-form-component/enterprise-form-component';
 
 export const routes: Routes = [
     {
@@ -62,6 +64,24 @@ export const routes: Routes = [
             },
         ]
     },
+    {
+        path: 'enterprises',
+        component: EnterpriseListComponent,
+        children: [
+            {
+                path: 'new',
+                component: EnterpriseFormComponent,
+            },
+            {
+                path: 'edit/:id',
+                component: EnterpriseFormComponent,
+            },
+            {
+                path: 'delete/:id',
+                component: EnterpriseFormComponent,
+            },
+        ]
+    }
     
     
 ];
