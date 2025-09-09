@@ -4,5 +4,5 @@ export interface EnterpriseCreateDto {
     site: string, 
     industry: string, 
     companySize: string, 
-    foundationYear: number
+    foundationYear?: number
 }
