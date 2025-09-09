@@ -1,0 +1,39 @@
+<div class="main-container">
+    <div class="form-main-container">
+        <div class="form-title-container">
+            <span>Enterprises</span>
+        </div>
+        <div class="form-container">
+            <form [formGroup]="form">
+                <div class="input-wrapper">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name">
+                </div>
+                <div class="input-wrapper">
+                    <label for="overview">Overview</label>
+                    <input id="overview" type="text" formControlName="overview">
+                </div>
+                <div class="input-wrapper">
+                    <label for="site">Site</label>
+                    <input id="site" type="text" formControlName="site">
+                </div>
+                <div class="input-wrapper">
+                    <label for="industry">Industry</label>
+                    <input id="industry" type="text" formControlName="industry">
+                </div>
+                <div class="input-wrapper">
+                    <label for="companySize">Company Size</label>
+                    <input id="companySize" type="text" formControlName="companySize">
+                </div>
+                <div class="input-wrapper">
+                    <label for="foundationYear">Foundation Year</label>
+                    <input id="foundationYear" type="text" formControlName="foundationYear">
+                </div>
+                <div class="form-buttons-wrapper">
+                    <app-button-component type="success" label="Save" (clicked)="onSave()" ></app-button-component>
+                    <app-button-component type="error" label="Cancel" (clicked)="onCancel()" ></app-button-component>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
